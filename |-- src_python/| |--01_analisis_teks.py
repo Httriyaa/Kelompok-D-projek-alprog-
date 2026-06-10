@@ -8,20 +8,14 @@ Original file is located at
 """
 
 # PROGRAM 1
-# Input teks dari pengguna
-teks = input("Masukkan teks: ")
+#Input teks dari pengguna
+teks=input("Masukkan teks:")
 
-# Menghitung jumlah kalimat
-jumlah_kalimat = teks.count(".")
+#Menghitung jumlah kata
+jumlah_kata=len(teks.split())
 
-# Menghapus tanda titik agar tidak dihitung sebagai kata
-teks_bersih = teks.replace(".", "")
-
-# Memisahkan teks menjadi kata-kata
-kata = teks_bersih.split()
-
-# Menghitung jumlah kata
-jumlah_kata = len(kata)
+#Menghitung jumlah kalimat
+jumlah_kalimat=len(teks.split("."))-1
 
 # Menampilkan hasil
 print("\nTeks tersebut memuat", jumlah_kalimat,
