@@ -1,4 +1,3 @@
-
 # Input titik U
 u1 = 9
 u2 = 7
