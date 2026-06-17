@@ -1,99 +1,38 @@
-# Input
-p_hat <- 0.4
-n <- 50
-alpha <- 0.10
-
-# Validasi proporsi
-if (is.na(p_hat)) {
-  cat("Error: p_hat harus berupa angka.\n")
-} else if (p_hat < 0 || p_hat > 1) {
-  cat("Error: Proporsi harus berada antara 0 dan 1.\n")
-}
+# Fungsi
+interval_proporsi <- function(phat, n, alpha) {
   
-  #Menentukan nilai z
+  # Validasi proporsi
+  if (phat < 0 || phat > 1) {
+    return("Error: Proporsi harus berada antara 0 dan 1.")
+  }
+  
+  # Menentukan nilai z
   if (alpha == 0.10) {
     z <- 1.645
   } else if (alpha == 0.05) {
     z <- 1.96
   } else {
-    cat("Error: Alpha hanya boleh 0.10 atau 0.05.\n")
-    quit()
+    return("Error: Nilai alpha hanya boleh 0.10 atau 0.05.")
   }
   
-  # Margin error
-  margin_error <- z * sqrt((p_hat * (1 - p_hat)) / n)
+  # Menghitung margin of error
+  margin <- z * sqrt((phat * (1 - phat)) / n)
   
-  # Interval kepercayaan
-  lower <- p_hat - margin_error
-  upper <- p_hat + margin_error
+  # Menghitung interval kepercayaan
+  batas_bawah <- phat - margin
+  batas_atas <- phat + margin
   
-  cat("\nInterval Kepercayaan:\n")
-  cat(sprintf("%.4f < p < %.4f\n", lower, upper))
-
-    
-# Input
-p_hat <- 0.6
-n <- 35
-alpha <- 0.05
-  
-# Validasi proporsi
-if (is.na(p_hat)) {
-  cat("Error: p_hat harus berupa angka.\n")
-} else if (p_hat < 0 || p_hat > 1) {
-  cat("Error: Proporsi harus berada antara 0 dan 1.\n")
+  # Menampilkan hasil
+  print(paste("Interval kepercayaan", (1 - alpha) * 100, "% adalah:"))
+  print(paste(round(batas_bawah, 4), "< p <", round(batas_atas, 4)))
 }
-  
-  #Menentukan nilai z
-  if (alpha == 0.10) {
-    z <- 1.645
-  } else if (alpha == 0.05) {
-    z <- 1.96
-  } else {
-    cat("Error: Alpha hanya boleh 0.10 atau 0.05.\n")
-    quit()
-  }
-  
-  # Margin error
-  margin_error <- z * sqrt((p_hat * (1 - p_hat)) / n)
-  
-  # Interval kepercayaan
-  lower <- p_hat - margin_error
-  upper <- p_hat + margin_error
-  
-  cat("\nInterval Kepercayaan:\n")
-  cat(sprintf("%.4f < p < %.4f\n", lower, upper))  
 
+#Penggunaan 
+proporsi_1<-interval_proporsi(0.6, 100, 0.05)
+proporsi_2<-interval_proporsi(0.7, 100, 0.10)
+proporsi_3<-interval_proporsi(1.3, 100, 0.05)
 
-# Input
-p_hat <- 0.3
-n <- 20
-alpha <- 0.05
-  
-# Validasi proporsi
-if (is.na(p_hat)) {
-  cat("Error: p_hat harus berupa angka.\n")
-} else if (p_hat < 0 || p_hat > 1) {
-  cat("Error: Proporsi harus berada antara 0 dan 1.\n")
-}
-  
-  #Menentukan nilai z
-  if (alpha == 0.10) {
-    z <- 1.645
-  } else if (alpha == 0.05) {
-    z <- 1.96
-  } else {
-    cat("Error: Alpha hanya boleh 0.10 atau 0.05.\n")
-    quit()
-  }
-  
-  # Margin error
-  margin_error <- z * sqrt((p_hat * (1 - p_hat)) / n)
-  
-  # Interval kepercayaan
-  lower <- p_hat - margin_error
-  upper <- p_hat + margin_error
-  
-  cat("\nInterval Kepercayaan:\n")
-  cat(sprintf("%.4f < p < %.4f\n", lower, upper))
-  
-  
+#Output
+print(proporsi_1)
+print(proporsi_2)
+print(proporsi_3)
