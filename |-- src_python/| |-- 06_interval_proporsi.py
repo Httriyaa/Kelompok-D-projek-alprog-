@@ -1,123 +1,31 @@
 import math
 
-# Input
-p_hat = float(input("Masukkan proporsi sampel (p̂): "))
-n = int(input("Masukkan ukuran sampel (n): "))
-alpha = float(input("Masukkan alpha (0.10 atau 0.05): "))
+# Fungsi interval kepercayaan proporsi
+def interval_proporsi(phat, n, alpha):
 
-# Validasi proporsi
-if p_hat < 0 or p_hat > 1:
-    print("Error: Proporsi harus berada antara 0 dan 1.")
-else:
+    if phat < 0 or phat > 1:
+        return "Error: Proporsi harus berada antara 0 dan 1."
 
-    # Menentukan nilai z
-    if alpha == 0.10:
-        z = 1.645
-    elif alpha == 0.05:
+    if alpha == 0.05:
         z = 1.96
-    else:
-        print("Error: Alpha hanya boleh 0.10 atau 0.05.")
-        exit()
-
-    # Menghitung margin error
-    margin_error = z * math.sqrt((p_hat * (1 - p_hat)) / n)
-
-    # Interval kepercayaan
-    lower = p_hat - margin_error
-    upper = p_hat + margin_error
-
-    print("\nInterval Kepercayaan:")
-    print(f"{lower:.4f} < p < {upper:.4f}")
-
-import math
-
-# Input
-p_hat = 0.6
-n = 100
-alpha = 0.05
-
-# Validasi proporsi
-if p_hat < 0 or p_hat > 1:
-    print("Error: Proporsi harus berada antara 0 dan 1.")
-else:
-
-    # Menentukan nilai z
-    if alpha == 0.10:
+    elif alpha == 0.10:
         z = 1.645
-    elif alpha == 0.05:
-        z = 1.96
     else:
-        print("Error: Alpha hanya boleh 0.10 atau 0.05.")
-        exit()
+        return "Error: Alpha harus 0.05 atau 0.10."
 
-    # Menghitung margin error
-    margin_error = z * math.sqrt((p_hat * (1 - p_hat)) / n)
+    margin_error = z * math.sqrt((phat * (1 - phat)) / n)
 
-    # Interval kepercayaan
-    lower = p_hat - margin_error
-    upper = p_hat + margin_error
+    batas_bawah = phat - margin_error
+    batas_atas = phat + margin_error
 
-    print("\nInterval Kepercayaan:")
-    print(f"{lower:.4f} < p < {upper:.4f}")
+    return(print(round(batas_bawah, 4),"< p <",round(batas_atas, 4)))
 
-import math
+# Pemanggilan fungsi
+print("p̂ = 0.6, n = 100, alpha = 0.05")
+(interval_proporsi(0.6, 100, 0.05))
 
-# Input
-p_hat = 0.7
-n = 100
-alpha = 0.10
+print("\np̂ = 0.7, n = 100, alpha = 0.10")
+(interval_proporsi(0.7, 100, 0.10))
 
-# Validasi proporsi
-if p_hat < 0 or p_hat > 1:
-    print("Error: Proporsi harus berada antara 0 dan 1.")
-else:
-
-    # Menentukan nilai z
-    if alpha == 0.10:
-        z = 1.645
-    elif alpha == 0.05:
-        z = 1.96
-    else:
-        print("Error: Alpha hanya boleh 0.10 atau 0.05.")
-        exit()
-
-    # Menghitung margin error
-    margin_error = z * math.sqrt((p_hat * (1 - p_hat)) / n)
-
-    # Interval kepercayaan
-    lower = p_hat - margin_error
-    upper = p_hat + margin_error
-
-    print("\nInterval Kepercayaan:")
-    print(f"{lower:.4f} < p < {upper:.4f}")
-
-import math
-
-# Input
-p_hat = 1.3
-n = 100
-alpha = 0.05
-
-# Validasi proporsi
-if p_hat < 0 or p_hat > 1:
-    print("Error: Proporsi harus berada antara 0 dan 1.")
-else:
-
-    # Menentukan nilai z
-    if alpha == 0.10:
-        z = 1.645
-    elif alpha == 0.05:
-        z = 1.96
-    else:
-        print("Error: Alpha hanya boleh 0.10 atau 0.05.")
-        exit()
-
-    # Menghitung margin error
-    margin_error = z * math.sqrt((p_hat * (1 - p_hat)) / n)
-
-    # Interval kepercayaan
-    lower = p_hat - margin_error
-    upper = p_hat + margin_error
-
-    print("\nInterval Kepercayaan:")
-    print(f"{lower:.4f} < p < {upper:.4f}")
+print("\np̂ = 1.3, n = 100, alpha = 0.05")
+print(interval_proporsi(1.3, 100, 0.05))
