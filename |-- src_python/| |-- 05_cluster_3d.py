@@ -1,88 +1,71 @@
 import math
-#Terhadap titik (9,7,5)
-# Input titik U
-u1 = 9
-u2 = 7
-u3 = 5
 
-# Hitung jarak ke Cluster A (2, 1, 3)
-jarakA = math.sqrt((u1 - 2)**2 + (u2 - 1)**2+ (u3 - 3)**2)
-# Hitung jarak ke Cluster B (1, -4, 6)
-jarakB = math.sqrt((u1 - 1)**2 + (u2 + 4)**2 + (u3 - 6)**2)
-# Hitung jarak ke Cluster C (-2, 3, -2)
-jarakC = math.sqrt((u1 + 2)**2 + (u2 - 3)**2 + (u3 + 2)**2)
+# Fungsi menghitung jarak Euclidean
+def jarak(titik1, titik2):
+    return math.sqrt(
+        (titik1[0] - titik2[0])**2 +
+        (titik1[1] - titik2[1])**2 +
+        (titik1[2] - titik2[2])**2
+    )
 
-# Menentukan cluster
-if jarakA < jarakB and jarakA < jarakC:
-    print("Titik U termasuk Cluster A")
-elif jarakB < jarakA and jarakB < jarakC:
-    print("Titik U termasuk Cluster B")
-else:
-    print("Titik U termasuk Cluster C")
+# Fungsi menentukan cluster
+def menentukan_cluster(U):
 
+    A = (2, 1, 3)
+    B = (1, -4, 6)
+    C = (-2, 3, -2)
+
+    dA = jarak(U, A)
+    dB = jarak(U, B)
+    dC = jarak(U, C)
+
+    if dA < dB and dA < dC:
+        return "Cluster A"
+    elif dB < dA and dB < dC:
+        return "Cluster B"
+    else:
+        return "Cluster C"
+
+# Pemanggilan fungsi
+hasil_1 = menentukan_cluster((9, 7, 5))
+hasil_2 = menentukan_cluster((2, -3, 5))
+hasil_3 = menentukan_cluster((-1, 2, -3))
+
+# Output
+print("Maka Titik (9, 7, 5) termasuk kedalam", hasil_1)
+print("Maka titik (2, -3, 5) termasuk kedalam", hasil_2)
+print("Maka Titik (-1, 2, -3) termasuk kedalam", hasil_3)
+
+#Contoh Error
 import math
-#Terhadap titik (1,-4,6)
-# Input titik U
-u1 = 2
-u2 = -3
-u3 = 5
 
-# Hitung jarak ke Cluster A (2, 1, 3)
-jarakA = math.sqrt((u1 - 2)**2 + (u2 - 1)**2+ (u3 - 3)**2)
-# Hitung jarak ke Cluster B (1, -4, 6)
-jarakB = math.sqrt((u1 - 1)**2 + (u2 + 4)**2 + (u3 - 6)**2)
-# Hitung jarak ke Cluster C (-2, 3, -2)
-jarakC = math.sqrt((u1 + 2)**2 + (u2 - 3)**2 + (u3 + 2)**2)
+# Fungsi menghitung jarak Euclidean
+def jarak(titik1, titik2):
+    return math.sqrt(
+        (titik1[0] - titik2[0])**2 +
+        (titik1[1] - titik2[1])**2 +
+        (titik1[2] - titik2[2])**2
+    )
 
-# Menentukan cluster
-if jarakA < jarakB and jarakA < jarakC:
-    print("Titik U termasuk Cluster A")
-elif jarakB < jarakA and jarakB < jarakC:
-    print("Titik U termasuk Cluster B")
-else:
-    print("Titik U termasuk Cluster C")
+# Fungsi menentukan cluster
+def menentukan_cluster(U):
 
-import math
-#Terhadap titik (-2,3,-2)
-# Input titik U
-u1 = -1
-u2 = 2
-u3 = -3
+    A = (2, 1, 3)
+    B = (1, -4, 6)
+    C = (-2, 3, -2)
 
-# Hitung jarak ke Cluster A (2, 1, 3)
-jarakA = math.sqrt((u1 - 2)**2 + (u2 - 1)**2+ (u3 - 3)**2)
-# Hitung jarak ke Cluster B (1, -4, 6)
-jarakB = math.sqrt((u1 - 1)**2 + (u2 + 4)**2 + (u3 - 6)**2)
-# Hitung jarak ke Cluster C (-2, 3, -2)
-jarakC = math.sqrt((u1 + 2)**2 + (u2 - 3)**2 + (u3 + 2)**2)
+    dA = jarak(U, A)
+    dB = jarak(U, B)
+    dC = jarak(U, C)
 
-# Menentukan cluster
-if jarakA < jarakB and jarakA < jarakC:
-    print("Titik U termasuk Cluster A")
-elif jarakB < jarakA and jarakB < jarakC:
-    print("Titik U termasuk Cluster B")
-else:
-    print("Titik U termasuk Cluster C")
+    if dA < dB and dA < dC:
+        return "Cluster A"
+    elif dB < dA and dB < dC:
+        return "Cluster B"
+    else:
+        return "Cluster C"
 
-
-import math
-#Terhadap titik (a,b,c)
-# Input titik U
-u1 = a
-u2 = b
-u3 = c
-
-# Hitung jarak ke Cluster A (2, 1, 3)
-jarakA = math.sqrt((u1 - 2)**2 + (u2 - 1)**2+ (u3 - 3)**2)
-# Hitung jarak ke Cluster B (1, -4, 6)
-jarakB = math.sqrt((u1 - 1)**2 + (u2 + 4)**2 + (u3 - 6)**2)
-# Hitung jarak ke Cluster C (-2, 3, -2)
-jarakC = math.sqrt((u1 + 2)**2 + (u2 - 3)**2 + (u3 + 2)**2)
-
-# Menentukan cluster
-if jarakA < jarakB and jarakA < jarakC:
-    print("Titik U termasuk Cluster A")
-elif jarakB < jarakA and jarakB < jarakC:
-    print("Titik U termasuk Cluster B")
-else:
-    print("Titik U termasuk Cluster C")
+# Pemanggilan fungsi
+hasil_4 = menentukan_cluster(("a","b","c"))
+# Output
+print("Maka Titik (a, b, c) termasuk kedalam", hasil_4)
